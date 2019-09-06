@@ -4,6 +4,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using PrismOutlook.Core;
 using PrismOutlook.Modules.Contacts.Menus;
+using PrismOutlook.Modules.Contacts.ViewModels;
 
 namespace PrismOutlook.Modules.Contacts
 {
@@ -23,7 +24,7 @@ namespace PrismOutlook.Modules.Contacts
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
         }
     }
 }

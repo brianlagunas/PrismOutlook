@@ -5,6 +5,8 @@ using Prism.Regions;
 using PrismOutlook.Core;
 using Prism.Events;
 using PrismOutlook.Modules.Mail.Menus;
+using Prism.Mvvm;
+using PrismOutlook.Modules.Mail.ViewModels;
 
 namespace PrismOutlook.Modules.Mail
 {
@@ -19,17 +21,14 @@ namespace PrismOutlook.Modules.Mail
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            //TODO: remove
-            _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ViewA));
-
-
-            _regionManager.RegisterViewWithRegion(RegionNames.RibbonRegion, typeof(HomeTab));
             _regionManager.RegisterViewWithRegion(RegionNames.OutlookGroupRegion, typeof(MailGroup));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            ViewModelLocationProvider.Register<MailGroup, MailGroupViewModel>();
+
+            containerRegistry.RegisterForNavigation<MailList, MailListViewModel>();
         }
     }
 }

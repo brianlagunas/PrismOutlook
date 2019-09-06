@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Regions\DependentViewRegionBehavior.cs" />
     <Compile Include="Core\Regions\XamOutlookBarRegionAdapter.cs" />
     <Compile Include="Core\Regions\XamRibbonRegionAdapter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -96,6 +97,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Infragistics.WPF.DataTree">
+      <Version>19.1.84</Version>
+    </PackageReference>
     <PackageReference Include="Infragistics.WPF.OutlookBar">
       <Version>19.1.84</Version>
     </PackageReference>
@@ -105,7 +109,7 @@
     <PackageReference Include="Infragistics.WPF.Themes.Office2013">
       <Version>19.1.84</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Unity" Version="7.1.0.431&#xD;" />
+    <PackageReference Include="Prism.Unity" Version="7.2.0.1367" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modules\PrismOutlook.Modules.Contacts\PrismOutlook.Modules.Contacts.csproj">

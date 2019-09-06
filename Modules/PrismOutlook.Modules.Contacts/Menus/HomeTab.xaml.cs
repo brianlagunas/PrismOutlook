@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PrismOutlook.Modules.Mail.Views
+namespace PrismOutlook.Modules.Contacts.Menus
 {
     /// <summary>
-    /// Interaction logic for ViewA.xaml
+    /// Interaction logic for HomeTab.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class HomeTab
     {
-        public ViewA()
+        public HomeTab()
         {
             InitializeComponent();
         }

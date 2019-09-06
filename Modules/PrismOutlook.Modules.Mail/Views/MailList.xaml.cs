@@ -1,16 +1,16 @@
 ﻿using PrismOutlook.Core;
-using PrismOutlook.Modules.Contacts.Menus;
+using PrismOutlook.Modules.Mail.Menus;
 using System.Windows.Controls;
 
-namespace PrismOutlook.Modules.Contacts.Views
+namespace PrismOutlook.Modules.Mail.Views
 {
     /// <summary>
-    /// Interaction logic for ViewA.xaml
+    /// Interaction logic for MailList
     /// </summary>
     [DependentView(RegionNames.RibbonRegion, typeof(HomeTab))]
-    public partial class ViewA : UserControl
+    public partial class MailList : UserControl
     {
-        public ViewA()
+        public MailList()
         {
             InitializeComponent();
         }

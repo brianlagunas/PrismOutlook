@@ -1,0 +1,10 @@
+﻿<ig:OutlookBarGroup x:Class="PrismOutlook.Modules.Mail.Menus.MailGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PrismOutlook.Modules.Mail.Menus"
+             xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
+                    Header="Mail">
+    <Grid>
+        <TextBlock Text="Testing"/>
+    </Grid>
+</ig:OutlookBarGroup>

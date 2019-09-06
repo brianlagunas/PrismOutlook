@@ -1,0 +1,10 @@
+﻿<ig:OutlookBarGroup x:Class="PrismOutlook.Modules.Contacts.Menus.ContactsGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PrismOutlook.Modules.Contacts.Menus"
+             xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
+                    Header="Contacts">
+    <Grid>
+        <TextBlock Text="Tetsing again from Contacts" />
+    </Grid>
+</ig:OutlookBarGroup>

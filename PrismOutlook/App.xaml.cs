@@ -9,6 +9,7 @@ using PrismOutlook.Core.Regions;
 using Infragistics.Windows.Ribbon;
 using PrismOutlook.Modules.Contacts;
 using PrismOutlook.Core;
+using Infragistics.Themes;
 
 namespace PrismOutlook
 {
@@ -20,6 +21,12 @@ namespace PrismOutlook
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
+        }
+
+        protected override void InitializeShell(Window shell)
+        {
+            Infragistics.Themes.ThemeManager.ApplicationTheme = new Office2013Theme();
+            base.InitializeShell(shell);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +45,13 @@ namespace PrismOutlook
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
             regionAdapterMappings.RegisterMapping(typeof(XamOutlookBar), Container.Resolve<XamOutlookBarRegionAdapter>());
             regionAdapterMappings.RegisterMapping(typeof(XamRibbon), Container.Resolve<XamRibbonRegionAdapter>());
+        }
+
+        protected override void ConfigureDefaultRegionBehaviors(IRegionBehaviorFactory regionBehaviors)
+        {
+            base.ConfigureDefaultRegionBehaviors(regionBehaviors);
+
+            regionBehaviors.AddIfMissing(DependentViewRegionBehavior.BehaviorKey, typeof(DependentViewRegionBehavior));
         }
     }
 }

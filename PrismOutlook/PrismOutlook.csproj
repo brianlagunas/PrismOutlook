@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Regions\DependentViewInfo.cs" />
     <Compile Include="Core\Regions\DependentViewRegionBehavior.cs" />
     <Compile Include="Core\Regions\XamOutlookBarRegionAdapter.cs" />
     <Compile Include="Core\Regions\XamRibbonRegionAdapter.cs" />
@@ -97,6 +98,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Infragistics.WPF.DataGrids">
+      <Version>19.1.84</Version>
+    </PackageReference>
     <PackageReference Include="Infragistics.WPF.DataTree">
       <Version>19.1.84</Version>
     </PackageReference>

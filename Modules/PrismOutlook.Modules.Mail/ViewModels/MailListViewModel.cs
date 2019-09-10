@@ -1,4 +1,5 @@
-﻿using Prism.Regions;
+﻿using Prism.Commands;
+using Prism.Regions;
 using PrismOutlook.Core;
 
 namespace PrismOutlook.Modules.Mail.ViewModels

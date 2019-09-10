@@ -8,7 +8,7 @@ namespace PrismOutlook.Modules.Mail.Views
     /// Interaction logic for MailList
     /// </summary>
     [DependentView(RegionNames.RibbonRegion, typeof(HomeTab))]
-    public partial class MailList : UserControl
+    public partial class MailList : UserControl, ISupportDataContext
     {
         public MailList()
         {

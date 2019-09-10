@@ -23,7 +23,7 @@ namespace PrismOutlook.Modules.Mail.Menus
                 if (item != null)
                     return ((NavigationItem)item.Data).NavigationPath;
 
-                return "MailList";
+                return "MailList?id=Default";
             }
         }
     }

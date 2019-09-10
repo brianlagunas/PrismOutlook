@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="IOutlookBarGroup.cs" />
+    <Compile Include="ISupportDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -80,7 +81,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegionNames.cs" />
-    <Compile Include="RibbonTabAttribute.cs" />
+    <Compile Include="DependentViewAttribute.cs" />
     <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

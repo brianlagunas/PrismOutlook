@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PrismOutlook.Modules.Contacts.ViewModels
 {
-    public class ViewAViewModel : BindableBase
+    public class ViewAViewModel : BindableBase, IRegionMemberLifetime
     {
         private string _message;
         public string Message
@@ -16,6 +17,8 @@ namespace PrismOutlook.Modules.Contacts.ViewModels
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
+
+        public bool KeepAlive => false;
 
         public ViewAViewModel()
         {

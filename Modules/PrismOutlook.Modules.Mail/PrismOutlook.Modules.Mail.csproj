@@ -109,6 +109,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Infragistics.WPF.DataGrids">
+      <Version>19.1.84</Version>
+    </PackageReference>
     <PackageReference Include="Infragistics.WPF.DataTree">
       <Version>19.1.84</Version>
     </PackageReference>

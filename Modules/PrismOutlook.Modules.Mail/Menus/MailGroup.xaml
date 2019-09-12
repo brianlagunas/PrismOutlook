@@ -16,7 +16,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ig:XamDataTree.GlobalNodeLayouts>
-                <ig:NodeLayout Key="GlobalLayout" TargetTypeName="NavigationItem" DisplayMemberPath="Caption"/>
+                <ig:NodeLayout Key="GlobalLayout" TargetTypeName="NavigationItem" DisplayMemberPath="Caption" IsExpandedMemberPath="IsExpanded" />
             </ig:XamDataTree.GlobalNodeLayouts>
         </ig:XamDataTree>
     </Grid>

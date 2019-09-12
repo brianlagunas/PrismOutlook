@@ -15,7 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismOutlook.Modules.Calend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismOutlook.Core", "PrismOutlook.Core\PrismOutlook.Core.csproj", "{0CBBB120-D481-42BA-98EC-E5BA133C79A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismOutlook.Business", "PrismOutlook.Business\PrismOutlook.Business.csproj", "{4D17ACBA-3B6B-4E68-9DE1-92E91EFF7A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismOutlook.Business", "PrismOutlook.Business\PrismOutlook.Business.csproj", "{4D17ACBA-3B6B-4E68-9DE1-92E91EFF7A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismOutlook.Services", "PrismOutlook.Services\PrismOutlook.Services.csproj", "{1943786F-B068-4BD4-8AD3-5CEAAD475E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismOutlook.Services.Interfaces", "PrismOutlook.Services.Interfaces\PrismOutlook.Services.Interfaces.csproj", "{AB96663E-E7B4-45DB-A386-CA73F1552794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,14 @@ Global
 		{4D17ACBA-3B6B-4E68-9DE1-92E91EFF7A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D17ACBA-3B6B-4E68-9DE1-92E91EFF7A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D17ACBA-3B6B-4E68-9DE1-92E91EFF7A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1943786F-B068-4BD4-8AD3-5CEAAD475E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1943786F-B068-4BD4-8AD3-5CEAAD475E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1943786F-B068-4BD4-8AD3-5CEAAD475E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1943786F-B068-4BD4-8AD3-5CEAAD475E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB96663E-E7B4-45DB-A386-CA73F1552794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB96663E-E7B4-45DB-A386-CA73F1552794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB96663E-E7B4-45DB-A386-CA73F1552794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB96663E-E7B4-45DB-A386-CA73F1552794}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

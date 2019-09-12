@@ -5,7 +5,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
                     xmlns:core="clr-namespace:PrismOutlook.Core;assembly=PrismOutlook.Core"
-        Title="{Binding Title}" Height="350" Width="525">
+        Title="{Binding Title}" Height="720" Width="1080">
     
     <ig:RibbonWindowContentHost>
         <ig:RibbonWindowContentHost.Ribbon>

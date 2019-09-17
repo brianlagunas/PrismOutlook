@@ -64,6 +64,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Dialogs\DialogServiceBase.cs" />
+    <Compile Include="Core\Dialogs\MyDialogService.cs" />
     <Compile Include="Core\Regions\DependentViewInfo.cs" />
     <Compile Include="Core\Regions\DependentViewRegionBehavior.cs" />
     <Compile Include="Core\Regions\XamOutlookBarRegionAdapter.cs" />

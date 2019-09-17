@@ -1,4 +1,5 @@
 ﻿using PrismOutlook.Business;
+using PrismOutlook.Services.Data;
 using PrismOutlook.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace PrismOutlook.Services
                 From = "blagunas@infragistics.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email",
-                Body = "This is the body of an email",
+                Body = Resources.DavidSmit_SampleCoverLetterEmail,
                 DateSent = DateTime.Now
             },
             new MailMessage()
@@ -26,7 +27,7 @@ namespace PrismOutlook.Services
                 From = "blagunas@infragistics.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email 2",
-                Body = "This is the body of an email 2",
+                Body = Resources.Barbara_Bailey_RE_GraphicDesignerCoverLetter,
                 DateSent = DateTime.Now.AddDays(-1)
             },
             new MailMessage()
@@ -35,7 +36,7 @@ namespace PrismOutlook.Services
                 From = "blagunas@infragistics.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email 3",
-                Body = "This is the body of an email 3",
+                Body = Resources.MargaretJones_RE_GraphicDesignerCoverLetter,
                 DateSent = DateTime.Now.AddDays(-5)
             },
         };

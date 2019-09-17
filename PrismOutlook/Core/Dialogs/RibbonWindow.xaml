@@ -1,0 +1,17 @@
+﻿<igWpf:XamRibbonWindow x:Class="PrismOutlook.Core.Dialogs.RibbonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+                       xmlns:prism="http://prismlibrary.com/"
+                       xmlns:core="clr-namespace:PrismOutlook.Core;assembly=PrismOutlook.Core">
+
+    <igWpf:RibbonWindowContentHost>
+        <igWpf:RibbonWindowContentHost.Ribbon>
+            <igWpf:XamRibbon prism:RegionManager.RegionName="{x:Static core:RegionNames.RibbonRegion}"/>
+        </igWpf:RibbonWindowContentHost.Ribbon>
+
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
+
+    </igWpf:RibbonWindowContentHost>
+
+</igWpf:XamRibbonWindow>

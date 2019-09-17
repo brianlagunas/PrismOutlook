@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="PrismOutlook.Modules.Mail.Views.MessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <TextBlock Text="Message View" FontSize="72"/>
+    </Grid>
+</UserControl>

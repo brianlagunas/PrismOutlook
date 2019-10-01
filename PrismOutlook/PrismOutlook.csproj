@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Core\Dialogs\RibbonDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,7 +69,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Dialogs\DialogServiceBase.cs" />
-    <Compile Include="Core\Dialogs\MyDialogService.cs" />
+    <Compile Include="Core\Dialogs\RegionDialogService.cs" />
+    <Compile Include="Core\Dialogs\RibbonDialogWindow.xaml.cs">
+      <DependentUpon>RibbonDialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\RegionManagerAwareBehavior.cs" />
     <Compile Include="Core\Regions\DependentViewInfo.cs" />
     <Compile Include="Core\Regions\DependentViewRegionBehavior.cs" />
     <Compile Include="Core\Regions\XamOutlookBarRegionAdapter.cs" />

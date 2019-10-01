@@ -4,16 +4,16 @@ using Prism.Services.Dialogs;
 using PrismOutlook.Business;
 using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
+using System;
 using System.Collections.ObjectModel;
-using PrismOutlook.Core.Dialogs;
 
 namespace PrismOutlook.Modules.Mail.ViewModels
 {
-    public class MailListViewModel : ViewModelBase
+    public class MailListViewModel : ViewModelBase, IDialogAware, IRegionManagerAware
     {
         private ObservableCollection<MailMessage> _messages;
         private readonly IMailService _mailService;
-        private readonly IDialogService _dialogService;
+        private readonly IRegionDialogService _regionDialogService;
 
         public ObservableCollection<MailMessage> Messages
         {
@@ -29,18 +29,25 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         }
 
         private DelegateCommand<string> _messageCommand;
+
+        public event Action<IDialogResult> RequestClose;
+
         public DelegateCommand<string> MessageCommand =>
             _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
 
+        public string Title => "Testing";
+
+        public IRegionManager RegionManager { get; set; }
+
         void ExecuteMessageCommand(string parameter)
         {
-            _dialogService.ShowRibbonWindow("MessageView");
+            _regionDialogService.ShowRibbonDialog("MessageView");
         }
 
-        public MailListViewModel(IMailService mailService, IDialogService dialogService)
+        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
         {
             _mailService = mailService;
-            _dialogService = dialogService;
+            _regionDialogService = regionDialogService;
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
@@ -67,6 +74,27 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                 default:
                     break;
             }            
+        }
+
+
+
+        public bool CanCloseDialog()
+        {
+            var result = System.Windows.MessageBox.Show("Close Mail List", "Close?", System.Windows.MessageBoxButton.YesNo);
+            if (result == System.Windows.MessageBoxResult.Yes)
+                return true;
+
+            return false;
+        }
+
+        public void OnDialogClosed()
+        {
+            
+        }
+
+        public void OnDialogOpened(IDialogParameters parameters)
+        {
+            
         }
     }
 }

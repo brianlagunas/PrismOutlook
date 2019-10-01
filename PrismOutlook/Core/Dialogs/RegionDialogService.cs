@@ -19,7 +19,7 @@ namespace PrismOutlook.Core.Dialogs
         {
             _containerExtension = containerExtension;
             _regionManager = regionManager;
-        
+        }
 
         public void Show(string regionName, string name)
         {
@@ -81,7 +81,7 @@ namespace PrismOutlook.Core.Dialogs
                         IDialogAware dialogAware = ((FrameworkElement)view).DataContext as IDialogAware;
 
                         //TODO: we need this to happen
-                        window.Closing -= closingHandler;
+                        //window.Closing -= closingHandler;
                     }
                 }
             };

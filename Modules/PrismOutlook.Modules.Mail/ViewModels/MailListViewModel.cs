@@ -6,12 +6,13 @@ using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PrismOutlook.Modules.Mail.ViewModels
 {
-    public class MailListViewModel : ViewModelBase, IDialogAware, IRegionManagerAware
+    public class MailListViewModel : ViewModelBase
     {
-        private ObservableCollection<MailMessage> _messages;
+        private ObservableCollection<MailMessage> _messages = new ObservableCollection<MailMessage>();
         private readonly IMailService _mailService;
         private readonly IRegionDialogService _regionDialogService;
 
@@ -30,18 +31,24 @@ namespace PrismOutlook.Modules.Mail.ViewModels
 
         private DelegateCommand<string> _messageCommand;
 
-        public event Action<IDialogResult> RequestClose;
-
         public DelegateCommand<string> MessageCommand =>
             _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
 
         public string Title => "Testing";
 
-        public IRegionManager RegionManager { get; set; }
 
         void ExecuteMessageCommand(string parameter)
         {
-            _regionDialogService.ShowRibbonDialog("MessageView");
+            if (SelectedMessage == null)
+                return;
+
+            var parameters = new DialogParameters();
+            parameters.Add("id", SelectedMessage.Id);
+
+            _regionDialogService.Show("MessageView", parameters, (result) =>
+            {
+                
+            });
         }
 
         public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
@@ -73,28 +80,9 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                     }
                 default:
                     break;
-            }            
-        }
+            }
 
-
-
-        public bool CanCloseDialog()
-        {
-            var result = System.Windows.MessageBox.Show("Close Mail List", "Close?", System.Windows.MessageBoxButton.YesNo);
-            if (result == System.Windows.MessageBoxResult.Yes)
-                return true;
-
-            return false;
-        }
-
-        public void OnDialogClosed()
-        {
-            
-        }
-
-        public void OnDialogOpened(IDialogParameters parameters)
-        {
-            
+            SelectedMessage = Messages.FirstOrDefault();
         }
     }
 }

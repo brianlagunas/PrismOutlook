@@ -4,6 +4,7 @@ using PrismOutlook.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace PrismOutlook.Services
@@ -53,6 +54,15 @@ namespace PrismOutlook.Services
         public IList<MailMessage> GetInboxItems()
         {
             return InboxItems;
+        }
+
+        public MailMessage GetMessage(int id)
+        {
+            var messages = new List<MailMessage>();
+            messages.AddRange(InboxItems);
+            messages.AddRange(SentItems);
+            messages.AddRange(DeletedItems);
+            return messages.FirstOrDefault(m => m.Id == id);
         }
 
         public IList<MailMessage> GetSentItems()

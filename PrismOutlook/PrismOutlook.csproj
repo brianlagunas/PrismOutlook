@@ -73,7 +73,6 @@
     <Compile Include="Core\Dialogs\RibbonDialogWindow.xaml.cs">
       <DependentUpon>RibbonDialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\RegionManagerAwareBehavior.cs" />
     <Compile Include="Core\Regions\DependentViewInfo.cs" />
     <Compile Include="Core\Regions\DependentViewRegionBehavior.cs" />
     <Compile Include="Core\Regions\XamOutlookBarRegionAdapter.cs" />

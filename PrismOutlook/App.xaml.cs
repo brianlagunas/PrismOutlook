@@ -58,7 +58,6 @@ namespace PrismOutlook
             base.ConfigureDefaultRegionBehaviors(regionBehaviors);
 
             regionBehaviors.AddIfMissing(DependentViewRegionBehavior.BehaviorKey, typeof(DependentViewRegionBehavior));
-            regionBehaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
         }
     }
 }

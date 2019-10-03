@@ -67,7 +67,6 @@
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="IRegionDialogService.cs" />
     <Compile Include="IOutlookBarGroup.cs" />
-    <Compile Include="IRegionManagerAware.cs" />
     <Compile Include="ISupportDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

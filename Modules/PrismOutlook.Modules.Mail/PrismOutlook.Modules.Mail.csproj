@@ -57,6 +57,9 @@
     <Compile Include="Menus\MailGroup.xaml.cs">
       <DependentUpon>MailGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menus\MessageTab.xaml.cs">
+      <DependentUpon>MessageTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menus\MailGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menus\MessageTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

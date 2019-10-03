@@ -1,0 +1,15 @@
+﻿<ig:RibbonTabItem x:Class="PrismOutlook.Modules.Mail.Menus.MessageTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
+             xmlns:local="clr-namespace:PrismOutlook.Modules.Mail.Menus"
+                  Header="Message Tab">
+    
+    <ig:RibbonGroup Caption="Mail">
+        <ig:ToolHorizontalWrapPanel>
+            <ig:ButtonTool Caption="Send" Command="{Binding SendMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        </ig:ToolHorizontalWrapPanel>
+    </ig:RibbonGroup>
+    
+</ig:RibbonTabItem>

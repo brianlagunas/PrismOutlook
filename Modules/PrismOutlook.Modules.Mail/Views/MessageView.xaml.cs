@@ -7,7 +7,7 @@ namespace PrismOutlook.Modules.Mail.Views
     /// <summary>
     /// Interaction logic for MessageView
     /// </summary>
-    [DependentView(RegionNames.RibbonRegion, typeof(HomeTab))]
+    [DependentView(RegionNames.RibbonRegion, typeof(MessageTab))] 
     public partial class MessageView : UserControl, ISupportDataContext
     {
         public MessageView()

@@ -7,7 +7,11 @@
 
     <ig:RibbonGroup Caption="New">
         <ig:ToolHorizontalWrapPanel>
-            <ig:ButtonTool Caption="Button" Command="{Binding MessageCommand}"
+            <ig:ButtonTool Caption="New" Command="{Binding NewMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+            <ig:ButtonTool Caption="Reply" Command="{Binding ReplyMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+            <ig:ButtonTool Caption="Delete" Command="{Binding DeleteMessageCommand}"
                            ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
         </ig:ToolHorizontalWrapPanel>
     </ig:RibbonGroup>

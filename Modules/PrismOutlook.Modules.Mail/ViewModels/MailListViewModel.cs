@@ -15,6 +15,7 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         private ObservableCollection<MailMessage> _messages = new ObservableCollection<MailMessage>();
         private readonly IMailService _mailService;
         private readonly IRegionDialogService _regionDialogService;
+        private string _currentFolder = FolderParameters.Inbox;
 
         public ObservableCollection<MailMessage> Messages
         {
@@ -29,13 +30,39 @@ namespace PrismOutlook.Modules.Mail.ViewModels
             set { SetProperty(ref _selectedMessage, value); }
         }
 
-        private DelegateCommand<string> _messageCommand;
+        private DelegateCommand _newMessageCommand;
+        public DelegateCommand NewMessageCommand =>
+            _newMessageCommand ?? (_newMessageCommand = new DelegateCommand(ExecuteNewMessageCommand));
 
+        void ExecuteNewMessageCommand()
+        {
+            var parameters = new DialogParameters();
+            parameters.Add("id", 0);
+
+            _regionDialogService.Show("MessageView", parameters, (result) =>
+            {
+                if (_currentFolder == FolderParameters.Sent)
+                    Messages.Add(result.Parameters.GetValue<MailMessage>("messageSent"));
+            });
+        }
+
+        private DelegateCommand<string> _messageCommand;
         public DelegateCommand<string> MessageCommand =>
             _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
 
-        public string Title => "Testing";
+        private DelegateCommand _deleteMessageCommand;
+        public DelegateCommand DeleteMessageCommand =>
+            _deleteMessageCommand ?? (_deleteMessageCommand = new DelegateCommand(ExecuteDeleteMessage));
 
+        void ExecuteDeleteMessage()
+        {
+            if (SelectedMessage == null)
+                return;
+
+            _mailService.DeleteMessage(SelectedMessage.Id);
+
+            Messages.Remove(SelectedMessage);
+        }
 
         void ExecuteMessageCommand(string parameter)
         {
@@ -59,8 +86,15 @@ namespace PrismOutlook.Modules.Mail.ViewModels
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var folder = navigationContext.Parameters.GetValue<string>(FolderParameters.FolderKey);
+            _currentFolder = navigationContext.Parameters.GetValue<string>(FolderParameters.FolderKey);
 
+            LoadMessages(_currentFolder);
+
+            SelectedMessage = Messages.FirstOrDefault();
+        }
+
+        void LoadMessages(string folder)
+        {
             switch (folder)
             {
                 case FolderParameters.Inbox:
@@ -81,8 +115,6 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                 default:
                     break;
             }
-
-            SelectedMessage = Messages.FirstOrDefault();
         }
     }
 }

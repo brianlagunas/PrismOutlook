@@ -28,6 +28,9 @@
         <!--Mail List-->
         <Grid Background="White" Margin="5,0,0,0">
             <igWpf:XamDataGrid Margin="0,0,10,0" DataSource="{Binding Messages}" ActiveDataItem="{Binding SelectedMessage}" RecordSelectorExtent="0" GroupByAreaLocation="None">
+                <igWpf:XamDataGrid.InputBindings>
+                    <KeyBinding Command="{Binding DeleteMessageCommand}" Key="Delete" />
+                </igWpf:XamDataGrid.InputBindings>
                 <igWpf:XamDataGrid.FieldSettings>
                     <igWpf:FieldSettings AllowEdit="False" CellClickAction="SelectRecord"/>
                 </igWpf:XamDataGrid.FieldSettings>

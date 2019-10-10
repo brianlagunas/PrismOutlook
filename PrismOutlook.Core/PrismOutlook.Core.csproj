@@ -35,6 +35,21 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net47\CommonServiceLocator.dll</HintPath>
     </Reference>
+    <Reference Include="InfragisticsWPF, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.WPF.19.1.84\lib\net40\InfragisticsWPF.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF.Controls.Editors.XamRichTextEditor, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.WPF.RichTextEditor.19.1.84\lib\net40\InfragisticsWPF.Controls.Editors.XamRichTextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF.Controls.Menus.XamMenu, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.WPF.Menus.19.1.84\lib\net40\InfragisticsWPF.Controls.Menus.XamMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF.Documents.RichTextDocument, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.WPF.RichTextDocument.19.1.84\lib\net40\InfragisticsWPF.Documents.RichTextDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF.Undo, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Infragistics.WPF.Undo.19.1.84\lib\net40\InfragisticsWPF.Undo.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=7.2.0.1367, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.7.2.0.1367\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -68,6 +83,7 @@
     <Compile Include="IRegionDialogService.cs" />
     <Compile Include="IOutlookBarGroup.cs" />
     <Compile Include="ISupportDataContext.cs" />
+    <Compile Include="ISupportRichText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

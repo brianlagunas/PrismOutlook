@@ -34,6 +34,20 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         public DelegateCommand NewMessageCommand =>
             _newMessageCommand ?? (_newMessageCommand = new DelegateCommand(ExecuteNewMessageCommand));
 
+        private DelegateCommand<string> _messageCommand;
+        public DelegateCommand<string> MessageCommand =>
+            _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
+
+        private DelegateCommand _deleteMessageCommand;
+        public DelegateCommand DeleteMessageCommand =>
+            _deleteMessageCommand ?? (_deleteMessageCommand = new DelegateCommand(ExecuteDeleteMessage));
+
+        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
+        {
+            _mailService = mailService;
+            _regionDialogService = regionDialogService;
+        }
+
         void ExecuteNewMessageCommand()
         {
             var parameters = new DialogParameters();
@@ -45,14 +59,6 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                     Messages.Add(result.Parameters.GetValue<MailMessage>("messageSent"));
             });
         }
-
-        private DelegateCommand<string> _messageCommand;
-        public DelegateCommand<string> MessageCommand =>
-            _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
-
-        private DelegateCommand _deleteMessageCommand;
-        public DelegateCommand DeleteMessageCommand =>
-            _deleteMessageCommand ?? (_deleteMessageCommand = new DelegateCommand(ExecuteDeleteMessage));
 
         void ExecuteDeleteMessage()
         {
@@ -78,19 +84,10 @@ namespace PrismOutlook.Modules.Mail.ViewModels
             });
         }
 
-        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
-        {
-            _mailService = mailService;
-            _regionDialogService = regionDialogService;
-        }
-
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             _currentFolder = navigationContext.Parameters.GetValue<string>(FolderParameters.FolderKey);
-
             LoadMessages(_currentFolder);
-
-            SelectedMessage = Messages.FirstOrDefault();
         }
 
         void LoadMessages(string folder)
@@ -115,6 +112,8 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                 default:
                     break;
             }
+
+            SelectedMessage = Messages.FirstOrDefault();
         }
     }
 }

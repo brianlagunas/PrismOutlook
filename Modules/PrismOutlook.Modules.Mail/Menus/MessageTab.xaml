@@ -10,6 +10,31 @@
             <ig:ButtonTool Caption="Send" Command="{Binding SendMessageCommand}"
                            ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
         </ig:ToolHorizontalWrapPanel>
+
+        <ig:ButtonGroup>
+            <ig:ButtonTool x:Name="_cut" Caption="Cut" Command="ApplicationCommands.Cut" />
+            <ig:ButtonTool x:Name="_copy" Caption="Copy" Command="ApplicationCommands.Copy" />
+            <ig:ButtonTool x:Name="_paste" Caption="Paste" Command="ApplicationCommands.Paste" />
+        </ig:ButtonGroup>
+
+        <ig:ButtonGroup>
+            <ig:ComboEditorTool x:Name="_fontNames" SelectedItemChanged="FontNames_SelectedItemChanged" />
+            <ig:ComboEditorTool x:Name="_fontSizes" SelectedItemChanged="FontSizes_SelectedItemChanged" />
+        </ig:ButtonGroup>
+
+        <ig:ButtonGroup>
+            <ig:ToggleButtonTool x:Name="_boldButton" Caption="Bold" Command="EditingCommands.ToggleBold" />
+            <ig:ToggleButtonTool x:Name="_italicButton" Caption="Italic" Command="EditingCommands.ToggleItalic" />
+            <ig:ToggleButtonTool x:Name="_underlineButton" Caption="Underline" Command="EditingCommands.ToggleUnderline" />
+        </ig:ButtonGroup>
+
+        <ig:ButtonGroup>
+            <ig:RadioButtonTool x:Name="_alignLeft" Caption="Left" Command="EditingCommands.AlignLeft" />
+            <ig:RadioButtonTool x:Name="_alignCenter" Caption="Center" Command="EditingCommands.AlignCenter"/>
+            <ig:RadioButtonTool x:Name="_alignRight" Caption="Right" Command="EditingCommands.AlignRight"/>
+            <ig:RadioButtonTool x:Name="_alignJustify" Caption="Justify" Command="EditingCommands.AlignJustify"/>
+        </ig:ButtonGroup>
+
     </ig:RibbonGroup>
     
 </ig:RibbonTabItem>

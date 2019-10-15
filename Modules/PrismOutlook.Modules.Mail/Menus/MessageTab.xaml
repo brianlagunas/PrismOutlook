@@ -4,37 +4,54 @@
              xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
              xmlns:local="clr-namespace:PrismOutlook.Modules.Mail.Menus"
                   Header="Message Tab">
-    
-    <ig:RibbonGroup Caption="Mail">
-        <ig:ToolHorizontalWrapPanel>
-            <ig:ButtonTool Caption="Send" Command="{Binding SendMessageCommand}"
-                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
-        </ig:ToolHorizontalWrapPanel>
 
-        <ig:ButtonGroup>
-            <ig:ButtonTool x:Name="_cut" Caption="Cut" Command="ApplicationCommands.Cut" />
-            <ig:ButtonTool x:Name="_copy" Caption="Copy" Command="ApplicationCommands.Copy" />
-            <ig:ButtonTool x:Name="_paste" Caption="Paste" Command="ApplicationCommands.Paste" />
-        </ig:ButtonGroup>
-
-        <ig:ButtonGroup>
-            <ig:ComboEditorTool x:Name="_fontNames" SelectedItemChanged="FontNames_SelectedItemChanged" />
-            <ig:ComboEditorTool x:Name="_fontSizes" SelectedItemChanged="FontSizes_SelectedItemChanged" />
-        </ig:ButtonGroup>
-
-        <ig:ButtonGroup>
-            <ig:ToggleButtonTool x:Name="_boldButton" Caption="Bold" Command="EditingCommands.ToggleBold" />
-            <ig:ToggleButtonTool x:Name="_italicButton" Caption="Italic" Command="EditingCommands.ToggleItalic" />
-            <ig:ToggleButtonTool x:Name="_underlineButton" Caption="Underline" Command="EditingCommands.ToggleUnderline" />
-        </ig:ButtonGroup>
-
-        <ig:ButtonGroup>
-            <ig:RadioButtonTool x:Name="_alignLeft" Caption="Left" Command="EditingCommands.AlignLeft" />
-            <ig:RadioButtonTool x:Name="_alignCenter" Caption="Center" Command="EditingCommands.AlignCenter"/>
-            <ig:RadioButtonTool x:Name="_alignRight" Caption="Right" Command="EditingCommands.AlignRight"/>
-            <ig:RadioButtonTool x:Name="_alignJustify" Caption="Justify" Command="EditingCommands.AlignJustify"/>
-        </ig:ButtonGroup>
-
+    <ig:RibbonGroup Caption="Clipboard">
+        <ig:ButtonTool Caption="Paste"
+                          Command="ApplicationCommands.Paste"
+                          LargeImage="/PrismOutlook.Modules.Mail;component/Images/Paste32.png" 
+                          ig:RibbonGroup.MinimumSize="ImageAndTextLarge" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <ig:ButtonTool Caption="Cut" 
+                          Command="ApplicationCommands.Cut"
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/Cut16.png" 
+                          ig:RibbonGroup.MaximumSize="ImageOnly"/>
+        <ig:ButtonTool Caption="Copy" 
+                          Command="ApplicationCommands.Copy"
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/Copy16.png" ig:RibbonGroup.MaximumSize="ImageOnly"/>
     </ig:RibbonGroup>
-    
+
+    <ig:RibbonGroup Caption="Font">
+        <ig:ToolHorizontalWrapPanel>
+            <ig:ButtonGroup>
+                <ig:ComboEditorTool x:Name="_fontNames" SelectedItemChanged="FontNames_SelectedItemChanged" IsEditable="True" />
+                <ig:ComboEditorTool x:Name="_fontSizes" SelectedItemChanged="FontSizes_SelectedItemChanged" EditAreaWidth="45" IsEditable="True" />
+            </ig:ButtonGroup>
+            <ig:ButtonGroup>
+                <ig:ToggleButtonTool x:Name="_boldButton" Command="EditingCommands.ToggleBold"
+                                        SmallImage="/PrismOutlook.Modules.Mail;component/Images/Bold16.png"/>
+                <ig:ToggleButtonTool x:Name="_italicButton" Command="EditingCommands.ToggleItalic" 
+                                        SmallImage="/PrismOutlook.Modules.Mail;component/Images/Italic16.png"/>
+                <ig:ToggleButtonTool x:Name="_underlineButton" Command="EditingCommands.ToggleUnderline"
+                                        SmallImage="/PrismOutlook.Modules.Mail;component/Images/Underline16.png"/>
+            </ig:ButtonGroup>
+        </ig:ToolHorizontalWrapPanel>
+    </ig:RibbonGroup>
+    <ig:RibbonGroup Caption="Paragraph">
+        <ig:ToolHorizontalWrapPanel>
+            <ig:ButtonGroup>
+                <ig:RadioButtonTool x:Name="_alignLeft" Command="EditingCommands.AlignLeft"
+                                       SmallImage="/PrismOutlook.Modules.Mail;component/Images/LeftAlign16.png" />
+                <ig:RadioButtonTool x:Name="_alignCenter" Command="EditingCommands.AlignCenter"
+                                       SmallImage="/PrismOutlook.Modules.Mail;component/Images/CenterAlign16.png" />
+                <ig:RadioButtonTool x:Name="_alignRight" Command="EditingCommands.AlignRight"
+                                       SmallImage="/PrismOutlook.Modules.Mail;component/Images/RightAlign16.png"/>
+                <ig:RadioButtonTool x:Name="_alignJustify" Command="EditingCommands.AlignJustify"
+                                       SmallImage="/PrismOutlook.Modules.Mail;component/Images/JustifyAlign16.png"/>
+            </ig:ButtonGroup>
+            <ig:ButtonGroup >
+                <ig:ToggleButtonTool x:Name="_bulletsButton" Click="BulletsButton_Click" Tag="Bullet" SmallImage="/PrismOutlook.Modules.Mail;component/Images/Bullets16.png" />
+                <ig:ToggleButtonTool x:Name="_numbersButton" Click="NumbersButton_Click" Tag="Decimal" SmallImage="/PrismOutlook.Modules.Mail;component/Images/Numbering16.png" />
+            </ig:ButtonGroup>
+        </ig:ToolHorizontalWrapPanel>
+    </ig:RibbonGroup>
+
 </ig:RibbonTabItem>

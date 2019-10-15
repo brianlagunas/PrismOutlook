@@ -3,56 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:ig="http://schemas.infragistics.com/xaml"
-             xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
              xmlns:converters="clr-namespace:PrismOutlook.Modules.Mail.Converters"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
     <UserControl.Resources>
         <converters:MailAddressConverter x:Key="MailAddressConverter" />
+        <SolidColorBrush Color="#D4D4D4" x:Key="LineBrush"/>
+        <SolidColorBrush Color="#666666" x:Key="LightTextBrush"/>
+        <SolidColorBrush Color="#444444" x:Key="DarkTextBrush"/>
     </UserControl.Resources>
 
-    <Border Grid.Column="1" Margin="5,0,0,0" Background="White">
-        <Grid Margin="5" Name="MessagePreviewArea">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="_grid" Margin="0,0,10,10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Grid Margin="10,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="To:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Message.To, Converter={StaticResource MailAddressConverter}}" 
-                               VerticalAlignment="Bottom" />
+            <Button Grid.RowSpan="3" Grid.Row="1" Margin="6,2,6,0" Width="55" Height="80" Command="{Binding SendMessageCommand}">
+                <StackPanel Orientation="Vertical">
+                    <Image Height="30" Source="/PrismOutlook.Modules.Mail;component/Images/Forward32.png"/>
+                    <TextBlock Text="Send" Foreground="{StaticResource LightTextBrush}"/>
+                </StackPanel>
+            </Button>
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Cc:"  HorizontalAlignment="Left" Height="25" Padding="0,7,0,0" />
-                <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Message.Cc, Converter={StaticResource MailAddressConverter}}" 
-                               VerticalAlignment="Bottom"  />
-
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Subject" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Message.Subject}" FontSize="16" />
-
-                <Rectangle Grid.Row="6" Grid.ColumnSpan="2" Stroke="#FFD4D4D4"  StrokeThickness="0.4" Height="1" VerticalAlignment="Center" Fill="Transparent" igPrim:XamlHelper.SnapsToDevicePixels="True"/>
-            </Grid>
-
-            <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
-            <ig:XamRichTextEditor x:Name="_rte" Grid.Row="1" AllowDocumentViewSplitting="False" BorderThickness="0">
-
-            </ig:XamRichTextEditor>
-
-
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="To:" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
+            <TextBox Grid.Row="1" Text="{Binding Message.To, Converter={StaticResource MailAddressConverter}}" Grid.Column="2" Margin="2" VerticalAlignment="Center" />
+            
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="CC:" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
+            <TextBox Grid.Row="2" Text="{Binding Message.Cc, Converter={StaticResource MailAddressConverter}}" Grid.Column="2" Margin="2" VerticalAlignment="Center" />
+            
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="Subject" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
+            <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Message.Subject}" VerticalAlignment="Stretch" Margin="2,4"/>
         </Grid>
-    </Border>
+
+        <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
+        <ig:XamRichTextEditor x:Name="_rte" AllowDocumentViewSplitting="False" Grid.Row="1" Margin="5,0,5,10" >
+            <ig:XamRichTextEditor.ClipboardSerializationProviders>
+                <ig:RtfSerializationProvider/>
+            </ig:XamRichTextEditor.ClipboardSerializationProviders>
+        </ig:XamRichTextEditor>
+
+    </Grid>
 </UserControl>

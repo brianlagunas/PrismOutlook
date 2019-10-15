@@ -154,9 +154,36 @@
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Bold16.png" />
+    <Resource Include="Images\Bullets16.png" />
+    <Resource Include="Images\CenterAlign16.png" />
+    <Resource Include="Images\Copy16.png" />
+    <Resource Include="Images\Cut16.png" />
+    <Resource Include="Images\Italic16.png" />
+    <Resource Include="Images\JustifyAlign16.png" />
+    <Resource Include="Images\LeftAlign16.png" />
+    <Resource Include="Images\Numbering16.png" />
+    <Resource Include="Images\Paste32.png" />
+    <Resource Include="Images\RightAlign16.png" />
+    <Resource Include="Images\Underline16.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Forward32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete16.png" />
+    <Resource Include="Images\Delete32.png" />
+    <Resource Include="Images\Forward16.png" />
+    <Resource Include="Images\NewMailMessage16.png" />
+    <Resource Include="Images\NewMailMessage32.png" />
+    <Resource Include="Images\Reply16.png" />
+    <Resource Include="Images\Reply32.png" />
+    <Resource Include="Images\ReplyAll16.png" />
+    <Resource Include="Images\ReplyAll32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

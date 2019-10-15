@@ -6,14 +6,30 @@
              Header="Mail">
 
     <ig:RibbonGroup Caption="New">
-        <ig:ToolHorizontalWrapPanel>
-            <ig:ButtonTool Caption="New" Command="{Binding NewMessageCommand}"
-                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
-            <ig:ButtonTool Caption="Reply" Command="{Binding ReplyMessageCommand}"
-                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
-            <ig:ButtonTool Caption="Delete" Command="{Binding DeleteMessageCommand}"
-                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
-        </ig:ToolHorizontalWrapPanel>
+        <ig:ButtonTool Caption="New Email" 
+                          Command="{Binding NewMessageCommand}" 
+                          CommandParameter="New" LargeImage="/PrismOutlook.Modules.Mail;component/Images/NewMailMessage32.png" 
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/NewMailMessage16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </ig:RibbonGroup>
+    <ig:RibbonGroup Caption="Delete">
+        <ig:ButtonTool Caption="Delete" 
+                          Command="{Binding DeleteMessageCommand}" 
+                          LargeImage="/PrismOutlook.Modules.Mail;component/Images/Delete32.png" 
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/Delete16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </ig:RibbonGroup>
+    <ig:RibbonGroup Caption="Respond">
+        <ig:ButtonTool Caption="Reply" 
+                          Command="{Binding ReplyMessageCommand}"
+                          LargeImage="/PrismOutlook.Modules.Mail;component/Images/Reply32.png" 
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/Reply16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge" />
+        <ig:ButtonTool Caption="ReplyAll" 
+                          Command="{Binding ReplyMessageCommand}"
+                          LargeImage="/PrismOutlook.Modules.Mail;component/Images/ReplyAll32.png" 
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/ReplyAll16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge" />
+        <ig:ButtonTool Caption="Forward" 
+                          Command="{Binding ReplyMessageCommand}"
+                          LargeImage="/PrismOutlook.Modules.Mail;component/Images/Forward32.png" 
+                          SmallImage="/PrismOutlook.Modules.Mail;component/Images/Forward16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
     </ig:RibbonGroup>
 
 </ig:RibbonTabItem>

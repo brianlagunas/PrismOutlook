@@ -113,6 +113,7 @@ namespace PrismOutlook.Modules.Mail.Menus
             UpdateUnderlineState(settings);
 
             UpdateAlignment(docSpan);
+            UpdateParagraphListStyleState(docSpan);
 
             _updatingState = false;
         }
@@ -170,9 +171,33 @@ namespace PrismOutlook.Modules.Mail.Menus
             if (settings.FontSettings == null)
                 return;
 
-            //TODO: add --- font for multi-font scenarios
             _fontNames.Value = (settings.FontSettings.Ascii.HasValue && !string.IsNullOrWhiteSpace(settings.FontSettings.Ascii.Value.Name))
                                 ? settings.FontSettings.Ascii.Value.Name : "Arial";
+        }
+
+        private void BulletsButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SetSelectionParagraphListStyle(_bulletsButton);
+        }
+
+        private void NumbersButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SetSelectionParagraphListStyle(_numbersButton);
+        }
+
+        private void SetSelectionParagraphListStyle(ToggleButton toggleButton)
+        {
+            if (toggleButton.IsChecked == true)
+                RichTextEditor.Selection.ApplyParagraphListStyle(toggleButton.Tag.ToString());
+            else
+                RichTextEditor.Selection.ClearParagraphListStyle();
+        }
+
+        void UpdateParagraphListStyleState(DocumentSpan documentSpan)
+        {
+            string listStyleId = RichTextEditor.Document.GetCommonParagraphListStyle(documentSpan);
+            UpdateToggleButton(_bulletsButton, _bulletsButton.Tag.ToString() == listStyleId);
+            UpdateToggleButton(_numbersButton, _numbersButton.Tag.ToString() == listStyleId);
         }
     }
 }

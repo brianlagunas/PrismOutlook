@@ -7,6 +7,7 @@ using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace PrismOutlook.Modules.Mail.ViewModels
@@ -30,6 +31,7 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         {
             _mailService.SendMessage(Message);
 
+            //todo: fix magic string
             IDialogParameters parameters = new DialogParameters();
             parameters.Add("messageSent", Message);
 
@@ -41,6 +43,7 @@ namespace PrismOutlook.Modules.Mail.ViewModels
             _mailService = mailService;
         }
 
+        //TODO: use this
         public string Title => "Mail Message";
 
         public event Action<IDialogResult> RequestClose;
@@ -57,11 +60,73 @@ namespace PrismOutlook.Modules.Mail.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            var messageId = parameters.GetValue<int>("id");
-            if (messageId == 0)
-                Message = new MailMessage() { From = "blagunas@infragistics.com" };
-            else
-                Message = _mailService.GetMessage(messageId);
+            Message = new MailMessage() { From = "blagunas@infragistics.com" };
+
+            var messageMode = parameters.GetValue<MessageMode>(MailParameters.MessageMode);
+            if (messageMode != MessageMode.New)
+            {
+                var messageId = parameters.GetValue<int>(MailParameters.MessageId);
+                var originalMessage = _mailService.GetMessage(messageId);
+
+                Message.To = GetToEmails(messageMode, originalMessage);
+
+                if (messageMode == MessageMode.Reply || messageMode == MessageMode.ReplyAll)
+                    Message.CC = originalMessage.CC;
+
+                Message.Subject = GetMessageSubject(messageMode, originalMessage);
+
+                //TODO: append RTF with reply header
+                Message.Body = originalMessage.Body;
+            }
+        }
+
+        string GetMessageSubject(MessageMode mode, MailMessage originalMessage)
+        {
+            string prefix = string.Empty;
+
+            switch (mode)
+            {
+                case MessageMode.Reply:
+                case MessageMode.ReplyAll:
+                    {
+                        prefix = "RE:";
+                        break;
+                    }
+                case MessageMode.Forward:
+                    {
+                        prefix = "FW:";
+                        break;
+                    }
+            }
+
+            return originalMessage.Subject.ToLower().StartsWith(prefix.ToLower()) ? originalMessage.Subject : $"{prefix} {originalMessage.Subject}";
+        }
+
+        ObservableCollection<string> GetToEmails(MessageMode mode, MailMessage message)
+        {
+            var toEmails = new ObservableCollection<string>();
+
+            switch (mode)
+            {
+                case MessageMode.Reply:
+                    {
+                        toEmails.Add(message.From);
+                        break;
+                    }
+                case MessageMode.ReplyAll:
+                    {
+                        //TODO: create user/account settings for sender email
+                        toEmails.AddRange(message.To.Where( x => x != "blagunas@infragistics.com"));
+                        toEmails.Add(message.From);
+                        break;
+                    }
+                case MessageMode.Forward:
+                    {
+                        break;
+                    }
+            }
+
+            return toEmails; ;
         }
     }
 }

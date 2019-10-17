@@ -16,7 +16,7 @@ namespace PrismOutlook.Services
             new MailMessage()
             {
                 Id = 1,
-                From = "blagunas@infragistics.com",
+                From = "jerrynixon@microsoft.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email",
                 Body = Resources.DavidSmit_SampleCoverLetterEmail,
@@ -25,7 +25,7 @@ namespace PrismOutlook.Services
             new MailMessage()
             {
                 Id = 2,
-                From = "blagunas@infragistics.com",
+                From = "jerrynixon@microsoft.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email 2",
                 Body = Resources.Barbara_Bailey_RE_GraphicDesignerCoverLetter,
@@ -34,7 +34,7 @@ namespace PrismOutlook.Services
             new MailMessage()
             {
                 Id = 3,
-                From = "blagunas@infragistics.com",
+                From = "jerrynixon@microsoft.com",
                 To = new ObservableCollection<string>(){ "jane@doe.com", "john@doe.com" },
                 Subject = "This is a test email 3",
                 Body = Resources.MargaretJones_RE_GraphicDesignerCoverLetter,

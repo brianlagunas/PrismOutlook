@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace PrismOutlook.Business
 {
@@ -23,14 +21,14 @@ namespace PrismOutlook.Business
             set { SetProperty(ref _subject, value); }
         }
 
-        private ObservableCollection<string> _to;
+        private ObservableCollection<string> _to = new ObservableCollection<string>();
         public ObservableCollection<string> To
         {
             get { return _to; }
             set { SetProperty(ref _to, value); }
         }
 
-        private ObservableCollection<string> _cc;
+        private ObservableCollection<string> _cc = new ObservableCollection<string>();
         public ObservableCollection<string> CC
         {
             get { return _cc; }
@@ -49,6 +47,11 @@ namespace PrismOutlook.Business
         {
             get { return _dateSent; }
             set { SetProperty(ref _dateSent, value); }
+        }
+
+        public MailMessage()
+        {
+            Id = new Random().Next(10, 6000);
         }
     }
 }

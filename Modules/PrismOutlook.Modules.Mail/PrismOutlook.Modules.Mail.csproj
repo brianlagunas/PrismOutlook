@@ -51,15 +51,20 @@
   <ItemGroup>
     <Compile Include="Converters\MailAddressConverter.cs" />
     <Compile Include="MailModule.cs" />
+    <Compile Include="MailParameters.cs" />
     <Compile Include="Menus\HomeTab.xaml.cs">
       <DependentUpon>HomeTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menus\MailGroup.xaml.cs">
       <DependentUpon>MailGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menus\MessageReadOnlyTab.xaml.cs">
+      <DependentUpon>MessageReadOnlyTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menus\MessageTab.xaml.cs">
       <DependentUpon>MessageTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MessageModes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,9 +81,13 @@
     <Compile Include="FolderParameters.cs" />
     <Compile Include="ViewModels\MailGroupViewModel.cs" />
     <Compile Include="ViewModels\MailListViewModel.cs" />
+    <Compile Include="ViewModels\MessageReadOnlyViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="Views\MailList.xaml.cs">
       <DependentUpon>MailList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessageReadOnlyView.xaml.cs">
+      <DependentUpon>MessageReadOnlyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
@@ -120,11 +129,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menus\MessageReadOnlyTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menus\MessageTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MailList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageReadOnlyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

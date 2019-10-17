@@ -76,9 +76,38 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                 return;
 
             var parameters = new DialogParameters();
-            parameters.Add("id", SelectedMessage.Id);
+            var viewName = "MessageView";
+            MessageMode replyType = MessageMode.Read;
 
-            _regionDialogService.Show("MessageView", parameters, (result) =>
+            switch (parameter)
+            {
+                case nameof(MessageMode.Read):
+                    {
+                        viewName = "MessageReadOnlyView";
+                        replyType = MessageMode.Read;
+                        break;
+                    }
+                case nameof(MessageMode.Reply):
+                    {
+                        replyType = MessageMode.Reply;
+                        break;
+                    }
+                case nameof(MessageMode.ReplyAll):
+                    {
+                        replyType = MessageMode.ReplyAll;
+                        break;
+                    }
+                case nameof(MessageMode.Forward):
+                    {
+                        replyType = MessageMode.Forward;
+                        break;
+                    }
+            }                
+
+            parameters.Add(MailParameters.MessageId, SelectedMessage.Id);
+            parameters.Add(MailParameters.MessageMode, replyType);
+
+            _regionDialogService.Show(viewName, parameters, (result) =>
             {
                 
             });

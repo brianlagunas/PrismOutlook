@@ -49,6 +49,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\MessageDisplayControl.xaml.cs">
+      <DependentUpon>MessageDisplayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\MailAddressConverter.cs" />
     <Compile Include="MailModule.cs" />
     <Compile Include="MailParameters.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="ViewModels\MailListViewModel.cs" />
     <Compile Include="ViewModels\MessageReadOnlyViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModelBase.cs" />
     <Compile Include="Views\MailList.xaml.cs">
       <DependentUpon>MailList.xaml</DependentUpon>
     </Compile>
@@ -121,6 +125,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\MessageDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menus\HomeTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -8,7 +8,7 @@ namespace PrismOutlook.Modules.Mail.Views
     /// Interaction logic for MessageReadOnlyView
     /// </summary>
     [DependentView(RegionNames.RibbonRegion, typeof(MessageReadOnlyTab))]
-    public partial class MessageReadOnlyView : UserControl
+    public partial class MessageReadOnlyView : UserControl, ISupportDataContext
     {
         public MessageReadOnlyView()
         {

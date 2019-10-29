@@ -45,7 +45,7 @@
             <TextBox Grid.Row="1" Text="{Binding Message.To, Converter={StaticResource MailAddressConverter}}" Grid.Column="2" Margin="2" VerticalAlignment="Center" />
             
             <TextBlock Grid.Row="2" Grid.Column="1" Text="CC:" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
-            <TextBox Grid.Row="2" Text="{Binding Message.Cc, Converter={StaticResource MailAddressConverter}}" Grid.Column="2" Margin="2" VerticalAlignment="Center" />
+            <TextBox Grid.Row="2" Text="{Binding Message.CC, Converter={StaticResource MailAddressConverter}}" Grid.Column="2" Margin="2" VerticalAlignment="Center" />
             
             <TextBlock Grid.Row="3" Grid.Column="1" Text="Subject" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
             <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Message.Subject}" VerticalAlignment="Stretch" Margin="2,4"/>

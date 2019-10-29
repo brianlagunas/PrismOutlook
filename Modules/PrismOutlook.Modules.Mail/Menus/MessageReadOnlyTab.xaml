@@ -13,15 +13,15 @@
     </ig:RibbonGroup>
     <ig:RibbonGroup Caption="Respond">
         <ig:ButtonTool Caption="Reply" 
-                          Command="{Binding ReplyMessageCommand}"
+                          Command="{Binding MessageCommand}" CommandParameter="Reply"
                           LargeImage="/PrismOutlook.Modules.Mail;component/Images/Reply32.png" 
                           SmallImage="/PrismOutlook.Modules.Mail;component/Images/Reply16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge" />
         <ig:ButtonTool Caption="ReplyAll" 
-                          Command="{Binding ReplyMessageCommand}"
+                          Command="{Binding MessageCommand}" CommandParameter="ReplyAll"
                           LargeImage="/PrismOutlook.Modules.Mail;component/Images/ReplyAll32.png" 
                           SmallImage="/PrismOutlook.Modules.Mail;component/Images/ReplyAll16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge" />
         <ig:ButtonTool Caption="Forward" 
-                          Command="{Binding ReplyMessageCommand}"
+                          Command="{Binding MessageCommand}" CommandParameter="Forward"
                           LargeImage="/PrismOutlook.Modules.Mail;component/Images/Forward32.png" 
                           SmallImage="/PrismOutlook.Modules.Mail;component/Images/Forward16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
     </ig:RibbonGroup>

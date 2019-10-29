@@ -1,32 +1,20 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using PrismOutlook.Business;
+﻿using Prism.Services.Dialogs;
+using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PrismOutlook.Modules.Mail.ViewModels
 {
-    public class MessageReadOnlyViewModel : BindableBase, IDialogAware
+    public class MessageReadOnlyViewModel : MessageViewModelBase, IDialogAware
     {
-        private MailMessage _message;
-        private readonly IMailService _mailService;
-
-        public MailMessage Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
         public event Action<IDialogResult> RequestClose;
 
         public string Title => "";
 
-        public MessageReadOnlyViewModel(IMailService mailService)
+        public MessageReadOnlyViewModel(IMailService mailService, IRegionDialogService regionDialogService) :
+            base (mailService, regionDialogService)
         {
-            _mailService = mailService;
+
         }
 
         public bool CanCloseDialog()
@@ -43,7 +31,20 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         {
             var messageId = parameters.GetValue<int>(MailParameters.MessageId);
             if (messageId != 0)
-                Message = _mailService.GetMessage(messageId);
+                Message = MailService.GetMessage(messageId);
+        }
+
+        protected override void ExecuteDeleteMessage()
+        {
+            base.ExecuteDeleteMessage();
+
+            var p = new DialogParameters();
+            p.Add(MailParameters.MessageMode, MessageMode.Delete);
+            p.Add(MailParameters.MessageId, Message.Id);
+
+            var result = new DialogResult(ButtonResult.OK, p);
+
+            RequestClose(result);
         }
     }
 }

@@ -4,17 +4,14 @@ using Prism.Services.Dialogs;
 using PrismOutlook.Business;
 using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace PrismOutlook.Modules.Mail.ViewModels
 {
-    public class MailListViewModel : ViewModelBase
+    public class MailListViewModel : MessageViewModelBase
     {
         private ObservableCollection<MailMessage> _messages = new ObservableCollection<MailMessage>();
-        private readonly IMailService _mailService;
-        private readonly IRegionDialogService _regionDialogService;
         private string _currentFolder = FolderParameters.Inbox;
 
         public ObservableCollection<MailMessage> Messages
@@ -23,94 +20,44 @@ namespace PrismOutlook.Modules.Mail.ViewModels
             set { SetProperty(ref _messages, value); }
         }
 
-        private MailMessage _selectedMessage;
-        public MailMessage SelectedMessage
-        {
-            get { return _selectedMessage; }
-            set { SetProperty(ref _selectedMessage, value); }
-        }
-
         private DelegateCommand _newMessageCommand;
         public DelegateCommand NewMessageCommand =>
             _newMessageCommand ?? (_newMessageCommand = new DelegateCommand(ExecuteNewMessageCommand));
 
-        private DelegateCommand<string> _messageCommand;
-        public DelegateCommand<string> MessageCommand =>
-            _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
-
-        private DelegateCommand _deleteMessageCommand;
-        public DelegateCommand DeleteMessageCommand =>
-            _deleteMessageCommand ?? (_deleteMessageCommand = new DelegateCommand(ExecuteDeleteMessage));
-
-        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
-        {
-            _mailService = mailService;
-            _regionDialogService = regionDialogService;
-        }
+        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService) :
+            base(mailService, regionDialogService)
+        { }
 
         void ExecuteNewMessageCommand()
         {
             var parameters = new DialogParameters();
             parameters.Add("id", 0);
 
-            _regionDialogService.Show("MessageView", parameters, (result) =>
+            RegionDialogService.Show("MessageView", parameters, (result) =>
             {
                 if (_currentFolder == FolderParameters.Sent)
                     Messages.Add(result.Parameters.GetValue<MailMessage>("messageSent"));
             });
         }
 
-        void ExecuteDeleteMessage()
+        protected override void ExecuteDeleteMessage()
         {
-            if (SelectedMessage == null)
-                return;
+            base.ExecuteDeleteMessage();
 
-            _mailService.DeleteMessage(SelectedMessage.Id);
-
-            Messages.Remove(SelectedMessage);
+            Messages.Remove(Message);
         }
 
-        void ExecuteMessageCommand(string parameter)
+        protected override void HandleMessageCallBack(IDialogResult result)
         {
-            if (SelectedMessage == null)
-                return;
-
-            var parameters = new DialogParameters();
-            var viewName = "MessageView";
-            MessageMode replyType = MessageMode.Read;
-
-            switch (parameter)
+            var mode = result.Parameters.GetValue<MessageMode>(MailParameters.MessageMode);
+            if (mode == MessageMode.Delete)
             {
-                case nameof(MessageMode.Read):
-                    {
-                        viewName = "MessageReadOnlyView";
-                        replyType = MessageMode.Read;
-                        break;
-                    }
-                case nameof(MessageMode.Reply):
-                    {
-                        replyType = MessageMode.Reply;
-                        break;
-                    }
-                case nameof(MessageMode.ReplyAll):
-                    {
-                        replyType = MessageMode.ReplyAll;
-                        break;
-                    }
-                case nameof(MessageMode.Forward):
-                    {
-                        replyType = MessageMode.Forward;
-                        break;
-                    }
-            }                
+                var messageId = result.Parameters.GetValue<int>(MailParameters.MessageId);
 
-            parameters.Add(MailParameters.MessageId, SelectedMessage.Id);
-            parameters.Add(MailParameters.MessageMode, replyType);
-
-            _regionDialogService.Show(viewName, parameters, (result) =>
-            {
-                
-            });
+                var messageToDelete = Messages.Where(x => x.Id == messageId).FirstOrDefault();
+                if (messageToDelete != null)
+                    Messages.Remove(messageToDelete);
+            }
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
@@ -125,24 +72,24 @@ namespace PrismOutlook.Modules.Mail.ViewModels
             {
                 case FolderParameters.Inbox:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetInboxItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetInboxItems());
                         break;
                     }
                 case FolderParameters.Sent:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetSentItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetSentItems());
                         break;
                     }
                 case FolderParameters.Deleted:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetDeletedItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetDeletedItems());
                         break;
                     }
                 default:
                     break;
             }
 
-            SelectedMessage = Messages.FirstOrDefault();
+            Message = Messages.FirstOrDefault();
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     public enum MessageMode
     {
+        Delete,
         New,
         Reply,
         ReplyAll,

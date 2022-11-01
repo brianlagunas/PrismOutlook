@@ -13,9 +13,6 @@
     <PackageReference Include="Infragistics.WPF.DataTree.Trial" Version="22.1.71" />
     <PackageReference Include="Infragistics.WPF.OutlookBar.Trial" Version="22.1.71" />
     <PackageReference Include="Infragistics.WPF.Ribbon.Trial" Version="22.1.71" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />

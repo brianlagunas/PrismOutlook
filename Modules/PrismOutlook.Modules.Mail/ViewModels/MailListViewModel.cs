@@ -65,7 +65,7 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                     { "message", ex.Message}
                 };
 
-                _dialogService.ShowDialog("Error", parameters, (result) =>
+                _dialogService.ShowDialog("ErrorDialog", parameters, (result) =>
                 {
                     //todo: handle callback if needed
                 });

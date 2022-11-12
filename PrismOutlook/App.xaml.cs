@@ -33,12 +33,13 @@ namespace PrismOutlook
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //custom dialog service that handles regions
-            containerRegistry.RegisterSingleton<IRegionDialogService, RegionDialogService>();
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
 
+            //custom dialog service that handles regions navigation
+            containerRegistry.RegisterSingleton<IRegionDialogService, RegionDialogService>();            
+
             //using the default dialog service for simple dialogs
-            containerRegistry.RegisterDialog<ErrorDialog, ErrorDialogViewModel>("Error");
+            containerRegistry.RegisterDialog<ErrorDialog, ErrorDialogViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

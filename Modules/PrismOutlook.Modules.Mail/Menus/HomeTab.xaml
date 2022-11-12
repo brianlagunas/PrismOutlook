@@ -31,5 +31,10 @@
                           LargeImage="/PrismOutlook.Modules.Mail;component/Images/Forward32.png" 
                           SmallImage="/PrismOutlook.Modules.Mail;component/Images/Forward16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
     </ig:RibbonGroup>
+    <ig:RibbonGroup Caption="Exception">
+        <ig:ButtonTool Caption="Throw"
+                          Command="{Binding ThrowExceptionCommand}" CommandParameter="New"
+                          ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </ig:RibbonGroup>
 
 </ig:RibbonTabItem>

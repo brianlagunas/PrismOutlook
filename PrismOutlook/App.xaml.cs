@@ -11,6 +11,7 @@ using PrismOutlook.Modules.Contacts;
 using PrismOutlook.Core;
 using Infragistics.Themes;
 using PrismOutlook.Core.Dialogs;
+using PrismOutlook.ViewModels;
 
 namespace PrismOutlook
 {
@@ -32,10 +33,12 @@ namespace PrismOutlook
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //custom dialog service that handles regions
             containerRegistry.RegisterSingleton<IRegionDialogService, RegionDialogService>();
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
 
-            //containerRegistry.RegisterDialogWindow<RibbonWindow>();
+            //using the default dialog service for simple dialogs
+            containerRegistry.RegisterDialog<ErrorDialog, ErrorDialogViewModel>("Error");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

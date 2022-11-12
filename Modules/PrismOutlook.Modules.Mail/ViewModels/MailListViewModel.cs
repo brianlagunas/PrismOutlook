@@ -4,6 +4,7 @@ using Prism.Services.Dialogs;
 using PrismOutlook.Business;
 using PrismOutlook.Core;
 using PrismOutlook.Services.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -24,9 +25,17 @@ namespace PrismOutlook.Modules.Mail.ViewModels
         public DelegateCommand NewMessageCommand =>
             _newMessageCommand ?? (_newMessageCommand = new DelegateCommand(ExecuteNewMessageCommand));
 
-        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService) :
+        private DelegateCommand _throwExceptionCommand;
+        private readonly IDialogService _dialogService;
+
+        public DelegateCommand ThrowExceptionCommand =>
+            _throwExceptionCommand ?? (_throwExceptionCommand = new DelegateCommand(ExecuteThrowExceptionCommand));
+
+        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService, IDialogService dialogService) :
             base(mailService, regionDialogService)
-        { }
+        {
+            _dialogService = dialogService;
+        }
 
         void ExecuteNewMessageCommand()
         {
@@ -41,6 +50,26 @@ namespace PrismOutlook.Modules.Mail.ViewModels
                 if (_currentFolder == FolderParameters.Sent)
                     Messages.Add(result.Parameters.GetValue<MailMessage>("messageSent"));
             });
+        }
+
+        void ExecuteThrowExceptionCommand()
+        {
+            try
+            {
+                throw new System.Exception(" This is an exception that was thrown in code.");
+            }
+            catch (Exception ex)
+            {
+                var parameters = new DialogParameters()
+                {
+                    { "message", ex.Message}
+                };
+
+                _dialogService.ShowDialog("Error", parameters, (result) =>
+                {
+                    //todo: handle callback if needed
+                });
+            }
         }
 
         protected override void ExecuteDeleteMessage()

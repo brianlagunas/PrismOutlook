@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:PrismOutlook.Modules.Mail.Menus"
                     xmlns:prism="http://prismlibrary.com/"
                     prism:ViewModelLocator.AutoWireViewModel="True"
-                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
                     xmlns:ig="http://schemas.infragistics.com/xaml"
                     Header="Mail">

@@ -30,8 +30,11 @@ namespace PrismOutlook.Modules.Mail.ViewModels
 
         void ExecuteNewMessageCommand()
         {
-            var parameters = new DialogParameters();
-            parameters.Add("id", 0);
+            var parameters = new DialogParameters
+            {
+                { "id", 0 },
+                { MailParameters.MessageMode, MessageMode.New }
+            };
 
             RegionDialogService.Show("MessageView", parameters, (result) =>
             {

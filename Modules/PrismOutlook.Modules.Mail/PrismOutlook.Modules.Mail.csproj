@@ -2,9 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
@@ -16,13 +15,14 @@
     <ProjectReference Include="..\..\PrismOutlook.Services\PrismOutlook.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Infragistics.WPF.DataGrids.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.DataTree.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.OutlookBar.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.Ribbon.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.RichTextDocument.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.RichTextEditor.Trial" Version="22.1.71" />
+    <PackageReference Include="Infragistics.WPF.DataGrids.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.DataTree.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.OutlookBar.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.Ribbon.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.RichTextEditor.Trial" Version="22.2.19" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Bold16.png" />

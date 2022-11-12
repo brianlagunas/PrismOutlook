@@ -2,15 +2,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Infragistics.WPF.RichTextDocument.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.RichTextEditor.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.Trial" Version="22.1.71" />
-    <PackageReference Include="Infragistics.WPF.Undo.Trial" Version="22.1.71" />
-    <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.RichTextEditor.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.Trial" Version="22.2.19" />
+    <PackageReference Include="Infragistics.WPF.Undo.Trial" Version="22.2.19" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 </Project>

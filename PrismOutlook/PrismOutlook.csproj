@@ -2,13 +2,12 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Infragistics.WPF.Themes.Office2013.Trial" Version="22.1.71" />
-    <PackageReference Include="Prism.Unity" Version="7.2.0.1367" />
+    <PackageReference Include="Infragistics.WPF.Themes.Office2013.Trial" Version="22.2.19" />
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modules\PrismOutlook.Modules.Contacts\PrismOutlook.Modules.Contacts.csproj" />
